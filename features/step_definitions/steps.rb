@@ -43,18 +43,18 @@ end
 
 
 # Step purpose: to click either the 'Max' or 'Clear' button
-And('I click {string} button') do |max_or_clear_button|
+And('I click {string} button') do |button|
   begin
-    case max_or_clear_button
+    case button
 
-    when 'Max'
+    when 'Max '
       # set a variable for max  button locator for further user
       max_button = @browser.element(xpath: "//div[@class='bet-input__controls']//button[text()='Max ']")
       raise "Error: Max button not found!" unless max_button.exists?
 
       max_button.click
 
-    when 'Clear'
+    when 'Clear '
       # set a variable for clear button locator for further user
       clear_button = @browser.element(xpath: "//div[@class='bet-input__controls']//button[text()='Clear ']")
       raise "Error: Clear button not found!" unless clear_button.exists?
@@ -66,7 +66,7 @@ And('I click {string} button') do |max_or_clear_button|
     end
   rescue StandardError => e
     # raise an error if any other exception occurs
-    raise "Error clicking '#{max_or_clear_button}' button: #{e.message}"
+    raise "Error clicking '#{button}' button: #{e.message}"
   end
 end
 
